@@ -9,7 +9,7 @@ Parameters:
 File: A CSV file containing stock data.
 Response:
 json
-Copy code
+
 {
   "total_records": 1000,
   "successful_records": 900,
@@ -34,7 +34,7 @@ end_date (required): The end date in YYYY-MM-DD format.
 symbol (optional): The stock symbol (e.g., ULTRACEMCO).
 Response:
 json
-Copy code
+
 {
   "highest_volume": {
     "date": "2024-01-05",
@@ -51,7 +51,7 @@ end_date (required): The end date in YYYY-MM-DD format.
 symbol (required): The stock symbol.
 Response:
 json
-Copy code
+
 {
   "average_close": 265.75
 }
@@ -64,7 +64,7 @@ end_date (optional): The end date in YYYY-MM-DD format.
 symbol (optional): The stock symbol.
 Response:
 json
-Copy code
+
 {
   "average_vwap": 268.80
 }
@@ -72,20 +72,24 @@ Error Responses:
 For all endpoints, if any required parameter is missing or invalid, return:
 
 json
-Copy code
+
 {
   "error": "Invalid or missing parameters."
 }
 If the database is unavailable or some other internal error occurs, return:
 
 json
-Copy code
+
 {
   "error": "Internal server error."
 }
-2. Postman Collection
-A Postman collection simplifies testing by providing pre-configured requests for each endpoint.
 
+
+
+
+
+
+2. Postman Collection
 Steps to create and share the Postman collection:
 
 Create Requests in Postman:
@@ -131,18 +135,22 @@ javascript
 Copy code
 const { validateCSVRow, calculateAverageClose, getHighestVolume } = require('../src/stockService');
 
-// Sample test for CSV validation
+ Sample test for CSV validation
+
+ 
 test('should reject rows with invalid date format', () => {
   const row = {
     date: '2024-13-01',
     symbol: 'ULTRACEMCO',
-    // other fields
+    
   };
   const result = validateCSVRow(row);
   expect(result.isValid).toBe(false);
 });
 
-// Sample test for highest volume
+ Sample test for highest volume
+
+ 
 test('should return record with highest volume', async () => {
   const mockData = [
     { date: '2024-01-01', volume: 1000 },
